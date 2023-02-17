@@ -6,10 +6,6 @@ import builtins
 import os
 import nltk
 
-# Get the current working directory
-cwd = os.getcwd()
-print("Current working directory:", cwd)
-
 # Download required NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')

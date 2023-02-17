@@ -22,4 +22,4 @@ To use the pipeline, simply specify the input file and the output file. The inpu
 
 This code is useful for preparing text data for a variety of NLP models, including GPT-2 and LSTM models. By applying the preprocessing pipeline, the text data is cleaned and standardized, which can improve the performance of the models.
 
-To run this code, ensure that the required packages are installed (NLTK), download the punkt and wordnet resources from NLTK, and modify the input and output file paths as necessary. This code can be easily adapted to handle other preprocessing tasks or to customize the pipeline for specific use cases.
+To run this code, ensure that the required packages are installed and modify the input and output file paths as necessary. This code can be easily adapted to handle other preprocessing tasks or to customize the pipeline for specific use cases. 

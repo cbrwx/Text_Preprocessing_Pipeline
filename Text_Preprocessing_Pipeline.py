@@ -167,7 +167,6 @@ for line_num, line in enumerate(lines):
         print(f"Line {line_num}: Removed {tokens_removed} redundant occurrences of a word.")
 print("Redundant occurrences of words removed from the text.") 
 
-
 # Remove empty lines
 lines = [line for line in lines if line]
 print("Empty lines removed.")

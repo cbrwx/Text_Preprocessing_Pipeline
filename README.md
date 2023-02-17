@@ -15,6 +15,9 @@ This code provides a text preprocessing pipeline for preparing text data for var
 - Saving the lemmatized text to a new file
 - The preprocessing pipeline uses the Natural Language Toolkit (NLTK) library, which provides tools for natural language processing tasks such as tokenization, stemming, and lemmatization.
 
+The input file can be in any encoding supported by Python's codecs module, and the output file is always saved in UTF-8 encoding. So make sure you verify that your
+output data match your expectations.
+
 To use the pipeline, simply specify the input file and the output file. The input file should contain the raw text data, and the output file will contain the preprocessed text.
 
 This code is useful for preparing text data for a variety of NLP models, including GPT-2 and LSTM models. By applying the preprocessing pipeline, the text data is cleaned and standardized, which can improve the performance of the models.

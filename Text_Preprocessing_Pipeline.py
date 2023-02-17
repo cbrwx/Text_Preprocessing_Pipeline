@@ -5,6 +5,7 @@ import re
 import builtins
 import os
 import nltk
+import codecs
 
 # Get the current working directory
 cwd = os.getcwd()
@@ -29,11 +30,18 @@ def expand_contractions(text, contractions_dict):
 def replace_numbers(text, replacement_token):
     return re.sub(r'\d+', replacement_token, text)
 
-# Open the input file and read its contents
-input_file = "e:\__results\enron_mails.txt"
-with builtins.open(input_file, "r", encoding="utf-8") as f:
+# Identify the encoding of the file and open it
+with codecs.open(input_file, "rb") as f:
     text = f.read()
-print("Input file read successfully.")
+    # Attempt to detect the encoding using a list of possible encodings
+    possible_encodings = ['utf-8', 'ISO-8859-1', 'cp1252']
+    for encoding in possible_encodings:
+        try:
+            text = text.decode(encoding)
+            print(f"Input file read successfully using {encoding} encoding.")
+            break
+        except:
+            continue
 
 # Remove emails
 text = re.sub(r"\S+@\S+", "", text)
@@ -167,6 +175,7 @@ for line_num, line in enumerate(lines):
         print(f"Line {line_num}: Removed {tokens_removed} redundant occurrences of a word.")
 print("Redundant occurrences of words removed from the text.") 
 
+
 # Remove empty lines
 lines = [line for line in lines if line]
 print("Empty lines removed.")
@@ -185,7 +194,7 @@ lemmas = [lemmatizer.lemmatize(token) for token in tokens]
 print("Tokens lemmatized.")
 
 # Save the lemmatized text to a new file
-output_file = "output_enron.txt"
+output_file = "wikipedia_articles_universe_tokenized.txt"
 with open(output_file, "w", encoding="utf-8") as f:
     f.write(" ".join(lemmas))
 print("Lemmatized text saved to output file:", output_file)

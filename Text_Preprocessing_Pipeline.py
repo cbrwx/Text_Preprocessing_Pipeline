@@ -9,12 +9,18 @@ import codecs
 
 # Get the current working directory
 cwd = os.getcwd()
-print("Current working directory:", cwd)
+print("Current working directory:", cwd) # Left to easily spot potential path issues
 
-# Download required NLTK data
-nltk.download('punkt')
-nltk.download('wordnet')
-print("NLTK data downloaded successfully.")
+# Check if punkt and wordnet are already downloaded
+try:
+    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('corpora/wordnet')
+    print("NLTK data found.")
+except LookupError:
+    # Download required NLTK data
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    print("NLTK data downloaded successfully.")
 
 # Define function for handling contractions
 def expand_contractions(text, contractions_dict):
@@ -198,3 +204,4 @@ output_file = "wikipedia_articles_universe_tokenized.txt"
 with open(output_file, "w", encoding="utf-8") as f:
     f.write(" ".join(lemmas))
 print("Lemmatized text saved to output file:", output_file)
+
